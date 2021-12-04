@@ -4,7 +4,6 @@
 #include <defaults.h>
 #include <global.h>
 #include <Canbus.h>
-//#include <slcan_funcs.h>
 
 #define LED_OPEN 5
 #define LED_ERR 6
@@ -109,7 +108,6 @@ int a2bhex_sub(char a)
 int a2bhex(char *p, uint8_t s, uint8_t n, void *v)
 {
   int i, j;
-  //char buf[4+1];
   int val;
 
   if (s == 1 || s == 2)  {
