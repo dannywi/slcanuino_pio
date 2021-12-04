@@ -55,7 +55,7 @@ def run(port, baud):
         c["prev_secs"] = curr_secs
         if "count" in c:
           c["count"] -= 1
-        print("SENT: {} {}".format(curr_secs, msg))
+        print("{} SENT: {} {}".format(datetime.now().time(), curr_secs, msg))
 
 if __name__ == '__main__':
 

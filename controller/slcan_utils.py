@@ -10,20 +10,20 @@ def _send(ser, msg):
   ser.write(msg.encode('utf-8'))
 
 def cmd_open_channel(ser):
-  _send(ser, '0')
+  _send(ser, 'O\r')
 
 def cmd_close_channel(ser):
-  _send(ser, 'C')
+  _send(ser, 'C\r')
 
 def cmd_toggle_timestamp(ser, flag):
   c = '0' if flag is False else '1'
-  _send(ser, 'Z' + c)
+  _send(ser, 'Z' + c + '\r')
 
 def cmd_send_accept_mask(ser):
-  _send(ser, 'M')
+  _send(ser, 'M\r')
 
 def cmd_send_accept_value(ser):
-  _send(ser, 'm')
+  _send(ser, 'm\r')
 
 _bit_rate = {
   'CANSPEED_100': '3',
@@ -36,16 +36,16 @@ _bit_rate = {
 
 def send_bit_rate(ser, val):
   if val in _bit_rate:
-    _send(ser, 'S' + _bit_rate[val])
+    _send(ser, 'S' + _bit_rate[val] + '\r')
 
 def send_status_req(ser):
-  _send(ser, 'F')
+  _send(ser, 'F\r')
 
 def send_version_req(ser):
-  _send(ser, 'V')
+  _send(ser, 'V\r')
 
 def send_serial_num_req(ser):
-  _send(ser, 'N')
+  _send(ser, 'N\r')
 
 def send_can_frame(ser, id, data, is_ext = False, is_rtr = False):
   msg = sc.convert_to_slcan(id, data, is_ext, is_rtr)
