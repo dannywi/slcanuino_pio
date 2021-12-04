@@ -29,12 +29,13 @@ def run(port, baud):
     timeout=0.2,
   )
 
+  time.sleep(2); # give time to reboot
+
   while True:
     data = ser.readline()
     if data:
       str = data.decode('unicode_escape').strip("\r").strip("\n")
       tm = datetime.now().time()
-      print("DEBUG ... len {}".format(len(str)))
       if sc.is_ack(str) == True:
           print("{} {}".format(tm, "ack"))
       elif sc.is_nack(str) == True:

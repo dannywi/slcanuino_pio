@@ -51,7 +51,7 @@ def convert_to_slcan(id, data, is_ext = False, is_rtr = False):
   msg = _head[is_ext][is_rtr]
 
   ### id section ###
-  if (is_ext and id >= 0x1FFFFFFF) or (is_ext and id >= 0x7FF):
+  if (is_ext and id >= 0x1FFFFFFF) or (not is_ext and id >= 0x7FF):
     print("ERR invalid id: is_ext [{}] id [{}]".format(id))
     return ""
   id_str = hex(id)[2:] # removing 0x
