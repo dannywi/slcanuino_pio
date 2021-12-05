@@ -12,13 +12,18 @@ can_msgs = [
     "can_msg": {"id":0x674, "data":[0xff, 0xfe, 0x04, 0x31, 0x80, 0x12, 0xf9, 0xf8], "is_ext": False},
     "interval": 3,
     "prev_secs": 0,
-    "count": 1,
+    "count": 10,
   },
   {
     "can_msg": {"id":0x683, "data":[0xfa, 0xce, 0xfe, 0xed, 0xbe, 0xef, 0xca, 0xfe], "is_ext": False},
     "interval": 5,
     "prev_secs": 0,
     "count": 60,
+  },
+  {
+    "can_msg": {"id":0x1ABC3333, "data":[0x12, 0x34, 0x56, 0x78, 0xab, 0xcd, 0xba], "is_ext": True},
+    "interval": 5,
+    "prev_secs": 0,
   },
 ]
 

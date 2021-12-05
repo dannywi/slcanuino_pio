@@ -38,25 +38,32 @@ After flashing
 3. By default the script prints incoming message to stdout and periodically send preset CAN messages. Alter the script to your heart's content. 
 
 ### Linux
-Note, this is from the original repo, and not tested at the initial commit time.
+Tested on Raspberry Pi.
 
 #### Environments
 Install SocketCAN
 ```
-    sudo apt install can-utils
+    $ udo apt install can-utils
 ```
 
-Please replace ttyUSB with ttyACM in case of using Arduino Uno.
+Check exact string of ttyACM (in case of using Arduino Uno) under ```/dev/```
 ```
-    # Setup
-    sudo slcan_attach -f -s6 -o /dev/ttyUSB0  
-    sudo slcand -S 1000000 ttyUSB0 can0  
-    sudo ifconfig can0 up  
+    # Setups
+    $ sudo slcan_attach -f -s6 -o /dev/ttyACM0
+        attached tty /dev/ttyACM0 to netdevice slcan0
+    $ sudo slcand -S 115200 ttyACM0 slcan0
+    $ sudo ip link set up slcan0
 
-    # To monitor
-    candump can0
-    
-    # Cleanup
-    sudo ifconfig can0 down  
-    sudo killall slcand  
+    # Check setups
+    $ ip addr | grep slcan0
+        5: slcan0: <NOARP,UP,LOWER_UP> mtu 16 qdisc pfifo_fast state UNKNOWN group default qlen 10
+
+    # Actions
+    $ candump slcan0
+    $ cansend slcan0 333#babefeedbabefeed
+    $ cansend slcan0 1234DCBA#babefeedcafedead
+
+    # Cleanups
+    $ sudo ifconfig slcan0 down
+    $ sudo killall slcand
 ```
