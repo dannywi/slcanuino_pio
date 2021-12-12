@@ -49,9 +49,7 @@ Install SocketCAN
 Check exact string of ttyACM (in case of using Arduino Uno) under ```/dev/```
 ```
     # Setups
-    $ sudo slcan_attach -f -s6 -o /dev/ttyACM0
-        attached tty /dev/ttyACM0 to netdevice slcan0
-    $ sudo slcand -S 115200 ttyACM0 slcan0
+    $ sudo slcand -o -c -f -S 115200 -s6 /dev/ttyACM0
     $ sudo ip link set up slcan0
 
     # Check setups

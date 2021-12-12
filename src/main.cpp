@@ -176,7 +176,7 @@ void xfer_can2tty()
     *p++ = '\r';
     *p++ = '\0';
 
-    Serial.println(buf);
+    Serial.print(buf);
     light_OPEN_LED(LED_ANA);
   }
 }
